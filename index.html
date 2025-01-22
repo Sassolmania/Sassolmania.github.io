@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sassolmania - CBTproduction</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/css.gg@2.0.0/icons/css/play-button.css" rel="stylesheet">
+    <link href="https://unpkg.com/css.gg@2.0.0/icons/css/info.css" rel="stylesheet">
+    <link href="https://unpkg.com/css.gg@2.0.0/icons/css/arrow-left-r.css" rel="stylesheet">
+    <link href="https://unpkg.com/css.gg@2.0.0/icons/css/arrow-right-r.css" rel="stylesheet">
+    <link href="https://unpkg.com/css.gg@2.0.0/icons/css/arrow-up-r.css" rel="stylesheet">
+    <link href="https://unpkg.com/css.gg@2.0.0/icons/css/volume.css" rel="stylesheet">
+    <link href="https://unpkg.com/css.gg@2.0.0/icons/css/volume-add.css" rel="stylesheet">
+    <link href="https://unpkg.com/css.gg@2.0.0/icons/css/heart.css" rel="stylesheet">
+</head>
+<body>
+    <div class="surface-container">
+        <div class="hero-section">
+            <div class="logo-container">
+                <h1 class="display-large">Sassolmania</h1>
+                <div class="game-subtitle">
+                    <h2>Un'avventura platform originale realizzato da CBTproduction</h2>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button onclick="startGame()" class="button">
+                    <i class="gg-play-button"></i>
+                    <span>Gioca Ora</span>
+                </button>
+                <button onclick="exitGame()" class="button">
+                    <i class="gg-info"></i>
+                    <span>Chi Siamo</span>
+                </button>
+            </div>
+
+            <div class="game-controls">
+                <h2 class="title-large">Comandi di Gioco</h2>
+                <div class="controls-list">
+                    <div class="control-item">
+                        <div class="control-key">
+                            <i class="gg-arrow-left-r"></i>
+                        </div>
+                        <div class="control-desc">Muovi a sinistra</div>
+                    </div>
+                    <div class="control-item">
+                        <div class="control-key">
+                            <i class="gg-arrow-right-r"></i>
+                        </div>
+                        <div class="control-desc">Muovi a destra</div>
+                    </div>
+                    <div class="control-item">
+                        <div class="control-key">
+                            <i class="gg-arrow-up-r"></i>
+                        </div>
+                        <div class="control-desc">Salta</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sound-control">
+                <button onclick="toggleMusic()" class="button" aria-label="Attiva/Disattiva musica">
+                    <i class="gg-volume-add" id="volumeIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <footer class="footer-content">
+            <p class="pixel-text">© 2025 CBTproduction - Tutti i diritti riservati</p>
+            <p class="made-with-love">Realizzato con <i class="gg-heart"></i> dalla CBTproduction a Caltanissetta</p>
+        </footer>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="assets/ost.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const music = document.getElementById('background-music');
+        const volumeIcon = document.getElementById('volumeIcon');
+        let isMusicPlaying = false;
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                music.pause();
+                volumeIcon.className = 'gg-volume-add';
+            } else {
+                music.play();
+                volumeIcon.className = 'gg-volume-add';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        document.addEventListener('click', function() {
+            if (!isMusicPlaying) {
+                toggleMusic();
+            }
+        }, { once: true });
+
+        function startGame() {
+            document.querySelector('.surface-container').classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = 'game.html';
+            }, 300);
+        }
+
+        function exitGame() {
+            document.querySelector('.surface-container').classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = 'about.html';
+            }, 300);
+        }
+    </script>
+</body>
+</html> 
